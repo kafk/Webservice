@@ -1,0 +1,2195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darko Apps ✦ We Make Cool Stuff</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple: #7c3aed;
+            --purple-light: #a78bfa;
+            --pink: #ec4899;
+            --pink-light: #f472b6;
+            --orange: #f97316;
+            --orange-light: #fb923c;
+            --yellow: #facc15;
+            --green: #22c55e;
+            --green-light: #86efac;
+            --blue: #3b82f6;
+            --cyan: #06b6d4;
+            --cream: #fffbeb;
+            --white: #ffffff;
+            --dark: #1e1b4b;
+            --gray: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            padding: 0.6rem 1rem;
+            background: var(--white);
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.15);
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--purple);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: var(--purple);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .nav-cta {
+            background: var(--orange) !important;
+            color: var(--white) !important;
+        }
+
+        /* Floating shapes */
+        .shapes-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            animation: float1 8s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--yellow);
+            top: 10%;
+            left: -100px;
+            opacity: 0.3;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--pink-light);
+            top: 60%;
+            right: -50px;
+            opacity: 0.3;
+            animation-delay: -3s;
+        }
+
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            background: var(--cyan);
+            bottom: 10%;
+            left: 20%;
+            opacity: 0.3;
+            animation-delay: -5s;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(30px, -30px) rotate(10deg); }
+        }
+
+        /* Content */
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: slideUp 0.6s ease-out 0.1s both;
+        }
+
+        .hero h1 .purple { color: var(--purple); }
+        .hero h1 .pink { color: var(--pink); }
+        .hero h1 .orange { color: var(--orange); }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            animation: slideUp 0.6s ease-out 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideUp 0.6s ease-out 0.3s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 3px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--purple);
+            color: var(--white);
+            box-shadow: 0 6px 0 #5b21b6;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 0 #5b21b6;
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--dark);
+            border-color: var(--dark);
+            box-shadow: 0 6px 0 var(--dark);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 0 var(--dark);
+        }
+
+        .btn-pink {
+            background: var(--pink);
+            color: var(--white);
+            box-shadow: 0 6px 0 #be185d;
+        }
+
+        .btn-pink:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 0 #be185d;
+        }
+
+        /* Section styles */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            background: var(--purple);
+            color: var(--white);
+        }
+
+        .section-header h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        /* Calculator Type Selector */
+        .calculator-selector {
+            background: var(--purple);
+            padding: 4rem 2rem;
+        }
+
+        .calculator-selector .section-header h2,
+        .calculator-selector .section-header p {
+            color: var(--white);
+        }
+
+        .calculator-selector .section-tag {
+            background: var(--yellow);
+            color: var(--dark);
+        }
+
+        .selector-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .selector-card {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 2.5rem;
+            text-align: center;
+            width: 320px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 0 rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            border: 4px solid transparent;
+        }
+
+        .selector-card:hover {
+            transform: translateY(-10px) rotate(-2deg);
+            box-shadow: 0 20px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .selector-card.active {
+            border-color: var(--yellow);
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .selector-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 28px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .selector-card:nth-child(1) .selector-icon {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+        }
+
+        .selector-card:nth-child(2) .selector-icon {
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+        }
+
+        .selector-card h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .selector-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .selector-card .starting-price {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.2rem;
+            color: var(--purple);
+        }
+
+        /* ==================== */
+        /* CALCULATOR COMMON    */
+        /* ==================== */
+        .calculator {
+            background: linear-gradient(180deg, var(--cream) 0%, #fef3c7 50%, var(--cream) 100%);
+            position: relative;
+            overflow: hidden;
+            display: none;
+        }
+
+        .calculator.active {
+            display: block;
+        }
+
+        .calculator::before {
+            content: '🧮';
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            font-size: 6rem;
+            opacity: 0.1;
+            animation: float1 8s ease-in-out infinite;
+        }
+
+        .calculator-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* Options Panel */
+        .options-panel {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .options-panel h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .options-panel > p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .option-category {
+            margin-bottom: 2rem;
+        }
+
+        .option-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem;
+            color: var(--purple);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px dashed var(--purple-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            background: var(--cream);
+            border-radius: 16px;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .option-item:hover {
+            border-color: var(--purple-light);
+            transform: translateX(5px);
+        }
+
+        .option-item.selected {
+            border-color: var(--purple);
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(236, 72, 153, 0.1));
+        }
+
+        .option-item.required {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(134, 239, 172, 0.1));
+            border-color: var(--green);
+        }
+
+        .option-item.required .option-toggle {
+            background: var(--green);
+            cursor: not-allowed;
+        }
+
+        .option-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex: 1;
+        }
+
+        .option-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            background: var(--white);
+            flex-shrink: 0;
+        }
+
+        .option-text h4 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .option-text p {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .option-price {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            color: var(--purple);
+            margin-right: 1rem;
+            white-space: nowrap;
+        }
+
+        .option-price.included {
+            color: var(--green);
+            font-size: 0.85rem;
+        }
+
+        .option-toggle {
+            width: 52px;
+            height: 30px;
+            border-radius: 15px;
+            background: #e2e8f0;
+            position: relative;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .option-toggle::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: var(--white);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .option-item.selected .option-toggle,
+        .option-item.required .option-toggle {
+            background: var(--purple);
+        }
+
+        .option-item.required .option-toggle {
+            background: var(--green);
+        }
+
+        .option-item.selected .option-toggle::after,
+        .option-item.required .option-toggle::after {
+            left: 25px;
+        }
+
+        /* Price Display Panel */
+        .price-panel {
+            position: sticky;
+            top: 100px;
+        }
+
+        .price-card {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 4px solid var(--purple);
+            text-align: center;
+        }
+
+        .price-card.website-card {
+            border-color: var(--cyan);
+        }
+
+        .price-card h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .total-price {
+            margin-bottom: 1.5rem;
+        }
+
+        .total-price .label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 0.25rem;
+        }
+
+        .total-price .amount {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--purple);
+            line-height: 1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 0.1rem;
+        }
+
+        .website-card .total-price .amount {
+            color: var(--cyan);
+        }
+
+        .total-price .currency {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .total-price .note {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+
+        .price-breakdown {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .price-breakdown h4 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.9rem;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .breakdown-list {
+            list-style: none;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .breakdown-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            font-size: 0.85rem;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .breakdown-list li:last-child {
+            border-bottom: none;
+        }
+
+        .breakdown-list .item-name {
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .breakdown-list .item-price {
+            color: var(--purple);
+            font-weight: 600;
+        }
+
+        .breakdown-list .item-price.included {
+            color: var(--green);
+        }
+
+        .time-estimate {
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            color: var(--white);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .time-estimate .label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .time-estimate .value {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .price-card .btn {
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .price-card .btn-reset {
+            background: var(--cream);
+            border-color: transparent;
+            box-shadow: none;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.5rem;
+            color: var(--dark);
+        }
+
+        .price-card .btn-reset:hover {
+            background: var(--purple-light);
+            color: var(--white);
+            transform: none;
+        }
+
+        .savings-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: linear-gradient(135deg, var(--green), var(--cyan));
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Monthly pricing option */
+        .monthly-option {
+            background: linear-gradient(135deg, var(--orange-light), var(--yellow));
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .monthly-option .label {
+            font-size: 0.8rem;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+
+        .monthly-option .value {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .monthly-option .note {
+            font-size: 0.75rem;
+            color: var(--dark);
+            opacity: 0.7;
+        }
+
+        /* Back button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            color: var(--purple);
+            background: var(--white);
+            border: 3px solid var(--purple);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .back-button:hover {
+            background: var(--purple);
+            color: var(--white);
+        }
+
+        /* Fun facts */
+        .fun-facts {
+            background: var(--yellow);
+            padding: 4rem 2rem;
+        }
+
+        .facts-grid {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .fact-item {
+            text-align: center;
+        }
+
+        .fact-emoji {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            animation: wiggle 2s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .fact-value {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .fact-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+
+        /* Services */
+        .services {
+            background: var(--cream);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 0 rgba(0, 0, 0, 0.05);
+            border: 3px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px) rotate(1deg);
+            border-color: var(--purple);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .service-card:nth-child(1) .service-icon { background: linear-gradient(135deg, var(--pink-light), var(--pink)); }
+        .service-card:nth-child(2) .service-icon { background: linear-gradient(135deg, var(--orange-light), var(--yellow)); }
+        .service-card:nth-child(3) .service-icon { background: linear-gradient(135deg, var(--cyan), var(--blue)); }
+        .service-card:nth-child(4) .service-icon { background: linear-gradient(135deg, var(--green), var(--cyan)); }
+
+        .service-card h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* CTA */
+        .cta {
+            background: var(--dark);
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '✦';
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            font-size: 3rem;
+            color: var(--purple);
+            animation: spin 10s linear infinite;
+        }
+
+        .cta::after {
+            content: '●';
+            position: absolute;
+            bottom: 20%;
+            right: 10%;
+            font-size: 5rem;
+            color: var(--pink);
+            animation: spin 15s linear infinite reverse;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cta h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: var(--white);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .cta p {
+            color: var(--purple-light);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .cta .btn-primary {
+            background: var(--pink);
+            box-shadow: 0 6px 0 #be185d;
+            position: relative;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--cream);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--purple);
+        }
+
+        .footer-copyright {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .calculator-container {
+                grid-template-columns: 1fr;
+            }
+
+            .price-panel {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                width: calc(100% - 2rem);
+                justify-content: space-between;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .selector-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .selector-card {
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .facts-grid {
+                gap: 2rem;
+            }
+
+            .total-price .amount {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="shapes-bg">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="content">
+        <nav>
+            <a href="#" class="logo">
+                <span class="logo-icon">📱</span>
+                Darko Apps
+            </a>
+            <ul class="nav-links">
+                <li><a href="#calculator-selector">Pricing</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact" class="nav-cta">Say Hi! 👋</a></li>
+            </ul>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>🚀</span> Available for new projects!
+                </div>
+                <h1>We make <span class="purple">apps</span> & <span class="pink">websites</span> that are <span class="orange">fun</span> to use!</h1>
+                <p>From wild ideas to reality — we build iOS apps and stunning websites with personality, polish, and a whole lot of ❤️</p>
+                <div class="hero-buttons">
+                    <a href="#calculator-selector" class="btn btn-primary">
+                        Calculate Price ✨
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        Let's Chat
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculator Type Selector -->
+        <section id="calculator-selector" class="calculator-selector">
+            <div class="section-header">
+                <span class="section-tag">🧮 Price Calculator</span>
+                <h2>What Do You Need?</h2>
+                <p>Choose your project type and build your custom quote!</p>
+            </div>
+
+            <div class="selector-cards">
+                <div class="selector-card" onclick="showCalculator('app')">
+                    <div class="selector-icon">📱</div>
+                    <h3>iOS App</h3>
+                    <p>Native iPhone & iPad apps with beautiful UI and smooth performance</p>
+                    <div class="starting-price">Starting at €2,499</div>
+                </div>
+
+                <div class="selector-card" onclick="showCalculator('website')">
+                    <div class="selector-icon">🌐</div>
+                    <h3>Website</h3>
+                    <p>Stunning websites, landing pages, and web apps that convert</p>
+                    <div class="starting-price">Starting at €999</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- APP CALCULATOR -->
+        <section id="app-calculator" class="calculator">
+            <button class="back-button" onclick="hideCalculators()">← Back to selection</button>
+
+            <div class="section-header">
+                <span class="section-tag">📱 App Calculator</span>
+                <h2>Build Your iOS App</h2>
+                <p>Toggle the features you need and watch the price update instantly!</p>
+            </div>
+
+            <div class="calculator-container">
+                <div class="options-panel">
+                    <h3>🛠️ Build Your App</h3>
+                    <p>Select the features and services you need. Some basics are always included!</p>
+
+                    <!-- Base Package -->
+                    <div class="option-category">
+                        <div class="category-title">📦 Base Package (Required)</div>
+
+                        <div class="option-item required" data-price="0" data-name="Project Setup" data-time="0" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">🎯</div>
+                                <div class="option-text">
+                                    <h4>Project Setup & Planning</h4>
+                                    <p>Kickoff meeting, requirements, timeline</p>
+                                </div>
+                            </div>
+                            <span class="option-price included">Included</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item required" data-price="0" data-name="Basic UI Design" data-time="0" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">🎨</div>
+                                <div class="option-text">
+                                    <h4>Basic UI Design</h4>
+                                    <p>Clean, modern interface design</p>
+                                </div>
+                            </div>
+                            <span class="option-price included">Included</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item required" data-price="2499" data-name="iOS Development" data-time="4" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">📱</div>
+                                <div class="option-text">
+                                    <h4>iOS Development</h4>
+                                    <p>Native Swift, up to 5 screens</p>
+                                </div>
+                            </div>
+                            <span class="option-price">€2,499</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item required" data-price="0" data-name="App Store Submission" data-time="0" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">🚀</div>
+                                <div class="option-text">
+                                    <h4>App Store Submission</h4>
+                                    <p>TestFlight + App Store listing</p>
+                                </div>
+                            </div>
+                            <span class="option-price included">Included</span>
+                            <div class="option-toggle"></div>
+                        </div>
+                    </div>
+
+                    <!-- Design Add-ons -->
+                    <div class="option-category">
+                        <div class="category-title">🎨 Design Add-ons</div>
+
+                        <div class="option-item" data-price="499" data-name="Premium UI Design" data-time="1" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">✨</div>
+                                <div class="option-text">
+                                    <h4>Premium UI Design</h4>
+                                    <p>Custom illustrations, premium look</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€499</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="349" data-name="App Icon Design" data-time="0.5" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">🎯</div>
+                                <div class="option-text">
+                                    <h4>Custom App Icon</h4>
+                                    <p>Unique, branded app icon</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€349</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="299" data-name="Splash Screen" data-time="0.5" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">🌅</div>
+                                <div class="option-text">
+                                    <h4>Animated Splash Screen</h4>
+                                    <p>Branded loading animation</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€299</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="599" data-name="Custom Animations" data-time="1" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">🎬</div>
+                                <div class="option-text">
+                                    <h4>Custom Animations</h4>
+                                    <p>Micro-interactions, transitions</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€599</span>
+                            <div class="option-toggle"></div>
+                        </div>
+                    </div>
+
+                    <!-- Features -->
+                    <div class="option-category">
+                        <div class="category-title">⚡ Features</div>
+
+                        <div class="option-item" data-price="799" data-name="Extra Screens (+5)" data-time="2" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">📄</div>
+                                <div class="option-text">
+                                    <h4>Extra Screens (+5)</h4>
+                                    <p>Additional app screens</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€799</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="999" data-name="Maps & Location" data-time="2" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">🗺️</div>
+                                <div class="option-text">
+                                    <h4>Maps & Location</h4>
+                                    <p>Interactive maps, GPS, custom pins</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€999</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="699" data-name="Push Notifications" data-time="1" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">🔔</div>
+                                <div class="option-text">
+                                    <h4>Push Notifications</h4>
+                                    <p>Engage users with alerts</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€699</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="899" data-name="User Authentication" data-time="1.5" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">🔐</div>
+                                <div class="option-text">
+                                    <h4>User Authentication</h4>
+                                    <p>Login, signup, profiles</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€899</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="1299" data-name="Payment Integration" data-time="2" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">💳</div>
+                                <div class="option-text">
+                                    <h4>Payment Integration</h4>
+                                    <p>Stripe, Apple Pay, in-app purchases</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€1,299</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="799" data-name="Offline Mode" data-time="1.5" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">📴</div>
+                                <div class="option-text">
+                                    <h4>Offline Mode</h4>
+                                    <p>Works without internet</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€799</span>
+                            <div class="option-toggle"></div>
+                        </div>
+                    </div>
+
+                    <!-- Backend & Data -->
+                    <div class="option-category">
+                        <div class="category-title">🔌 Backend & Data</div>
+
+                        <div class="option-item" data-price="999" data-name="API Integration" data-time="2" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">🔗</div>
+                                <div class="option-text">
+                                    <h4>API Integration</h4>
+                                    <p>Connect to your backend</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€999</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="1999" data-name="Backend Development" data-time="4" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">⚙️</div>
+                                <div class="option-text">
+                                    <h4>Backend Development</h4>
+                                    <p>Custom server & database</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€1,999</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="1499" data-name="Admin Dashboard" data-time="3" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">📊</div>
+                                <div class="option-text">
+                                    <h4>Admin Dashboard</h4>
+                                    <p>Web panel to manage content</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€1,499</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="599" data-name="Analytics Integration" data-time="0.5" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">📈</div>
+                                <div class="option-text">
+                                    <h4>Analytics Integration</h4>
+                                    <p>Track user behavior</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€599</span>
+                            <div class="option-toggle"></div>
+                        </div>
+                    </div>
+
+                    <!-- Support -->
+                    <div class="option-category">
+                        <div class="category-title">💚 Support & Maintenance</div>
+
+                        <div class="option-item" data-price="499" data-name="Extended Support (90 days)" data-time="0" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">🛡️</div>
+                                <div class="option-text">
+                                    <h4>Extended Support</h4>
+                                    <p>90 days instead of 30</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€499</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="299" data-name="Priority Support" data-time="0" data-calc="app">
+                            <div class="option-info">
+                                <div class="option-icon">⚡</div>
+                                <div class="option-text">
+                                    <h4>Priority Support</h4>
+                                    <p>24h response guarantee</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€299</span>
+                            <div class="option-toggle"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price Panel -->
+                <div class="price-panel">
+                    <div class="price-card">
+                        <h3>📱 Your App Price</h3>
+
+                        <div class="total-price">
+                            <div class="label">Estimated Total</div>
+                            <div class="amount">
+                                <span class="currency">€</span>
+                                <span id="appTotalPrice">2,499</span>
+                            </div>
+                            <div class="note">One-time payment</div>
+                        </div>
+
+                        <div class="price-breakdown">
+                            <h4>📋 Your Selection</h4>
+                            <ul class="breakdown-list" id="appBreakdownList">
+                                <li>
+                                    <span class="item-name">📱 iOS Development</span>
+                                    <span class="item-price">€2,499</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="time-estimate">
+                            <div class="label">⏱️ Estimated Timeline</div>
+                            <div class="value" id="appTimeEstimate">4-6 weeks</div>
+                        </div>
+
+                        <a href="#contact" class="btn btn-primary">Get Started 🚀</a>
+                        <button class="btn btn-reset" onclick="resetAppCalculator()">Reset Selection 🔄</button>
+
+                        <div class="savings-badge" id="appSavingsBadge" style="display: none;">
+                            🎉 Bundle discount applied!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WEBSITE CALCULATOR -->
+        <section id="website-calculator" class="calculator">
+            <button class="back-button" onclick="hideCalculators()">← Back to selection</button>
+
+            <div class="section-header">
+                <span class="section-tag">🌐 Website Calculator</span>
+                <h2>Build Your Website</h2>
+                <p>Toggle the features you need and watch the price update instantly!</p>
+            </div>
+
+            <div class="calculator-container">
+                <div class="options-panel">
+                    <h3>🛠️ Build Your Website</h3>
+                    <p>Select the features and services you need. Some basics are always included!</p>
+
+                    <!-- Base Package -->
+                    <div class="option-category">
+                        <div class="category-title">📦 Base Package (Required)</div>
+
+                        <div class="option-item required" data-price="0" data-name="Project Setup" data-time="0" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">🎯</div>
+                                <div class="option-text">
+                                    <h4>Project Setup & Planning</h4>
+                                    <p>Kickoff meeting, requirements, timeline</p>
+                                </div>
+                            </div>
+                            <span class="option-price included">Included</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item required" data-price="999" data-name="Landing Page" data-time="1" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">🏠</div>
+                                <div class="option-text">
+                                    <h4>Landing Page</h4>
+                                    <p>Beautiful one-page website</p>
+                                </div>
+                            </div>
+                            <span class="option-price">€999</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item required" data-price="0" data-name="Mobile Responsive" data-time="0" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">📱</div>
+                                <div class="option-text">
+                                    <h4>Mobile Responsive</h4>
+                                    <p>Looks great on all devices</p>
+                                </div>
+                            </div>
+                            <span class="option-price included">Included</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item required" data-price="0" data-name="Basic SEO" data-time="0" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">🔍</div>
+                                <div class="option-text">
+                                    <h4>Basic SEO Setup</h4>
+                                    <p>Meta tags, sitemap, basics</p>
+                                </div>
+                            </div>
+                            <span class="option-price included">Included</span>
+                            <div class="option-toggle"></div>
+                        </div>
+                    </div>
+
+                    <!-- Pages & Structure -->
+                    <div class="option-category">
+                        <div class="category-title">📄 Pages & Structure</div>
+
+                        <div class="option-item" data-price="399" data-name="Extra Pages (+3)" data-time="0.5" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">📑</div>
+                                <div class="option-text">
+                                    <h4>Extra Pages (+3)</h4>
+                                    <p>About, Services, Contact, etc.</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€399</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="699" data-name="Blog Section" data-time="1" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">📝</div>
+                                <div class="option-text">
+                                    <h4>Blog Section</h4>
+                                    <p>News, articles, updates</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€699</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="499" data-name="Portfolio/Gallery" data-time="0.5" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">🖼️</div>
+                                <div class="option-text">
+                                    <h4>Portfolio / Gallery</h4>
+                                    <p>Showcase your work beautifully</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€499</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="299" data-name="FAQ Section" data-time="0.5" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">❓</div>
+                                <div class="option-text">
+                                    <h4>FAQ Section</h4>
+                                    <p>Accordion-style Q&A</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€299</span>
+                            <div class="option-toggle"></div>
+                        </div>
+                    </div>
+
+                    <!-- Design Add-ons -->
+                    <div class="option-category">
+                        <div class="category-title">🎨 Design Add-ons</div>
+
+                        <div class="option-item" data-price="599" data-name="Premium Design" data-time="1" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">✨</div>
+                                <div class="option-text">
+                                    <h4>Premium Design</h4>
+                                    <p>Custom illustrations, unique look</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€599</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="399" data-name="Custom Animations" data-time="0.5" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">🎬</div>
+                                <div class="option-text">
+                                    <h4>Custom Animations</h4>
+                                    <p>Scroll effects, micro-interactions</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€399</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="299" data-name="Dark Mode" data-time="0.5" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">🌙</div>
+                                <div class="option-text">
+                                    <h4>Dark Mode</h4>
+                                    <p>Light/dark theme toggle</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€299</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="199" data-name="Custom Favicon" data-time="0.25" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">🔖</div>
+                                <div class="option-text">
+                                    <h4>Custom Favicon</h4>
+                                    <p>Branded browser icon</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€199</span>
+                            <div class="option-toggle"></div>
+                        </div>
+                    </div>
+
+                    <!-- Features -->
+                    <div class="option-category">
+                        <div class="category-title">⚡ Features</div>
+
+                        <div class="option-item" data-price="349" data-name="Contact Form" data-time="0.5" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">📧</div>
+                                <div class="option-text">
+                                    <h4>Contact Form</h4>
+                                    <p>With email notifications</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€349</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="599" data-name="Interactive Maps" data-time="0.5" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">🗺️</div>
+                                <div class="option-text">
+                                    <h4>Interactive Maps</h4>
+                                    <p>Google Maps / Leaflet integration</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€599</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="499" data-name="Newsletter Signup" data-time="0.5" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">💌</div>
+                                <div class="option-text">
+                                    <h4>Newsletter Signup</h4>
+                                    <p>Mailchimp / ConvertKit integration</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€499</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="399" data-name="Social Media Feed" data-time="0.5" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">📸</div>
+                                <div class="option-text">
+                                    <h4>Social Media Feed</h4>
+                                    <p>Instagram, Twitter embed</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€399</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="799" data-name="Booking System" data-time="1.5" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">📅</div>
+                                <div class="option-text">
+                                    <h4>Booking / Scheduling</h4>
+                                    <p>Calendly-style appointments</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€799</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="299" data-name="Live Chat" data-time="0.25" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">💬</div>
+                                <div class="option-text">
+                                    <h4>Live Chat Widget</h4>
+                                    <p>Intercom / Crisp integration</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€299</span>
+                            <div class="option-toggle"></div>
+                        </div>
+                    </div>
+
+                    <!-- E-commerce -->
+                    <div class="option-category">
+                        <div class="category-title">🛒 E-commerce</div>
+
+                        <div class="option-item" data-price="1999" data-name="Online Store" data-time="3" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">🛍️</div>
+                                <div class="option-text">
+                                    <h4>Online Store</h4>
+                                    <p>Full e-commerce with cart & checkout</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€1,999</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="699" data-name="Payment Gateway" data-time="0.5" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">💳</div>
+                                <div class="option-text">
+                                    <h4>Payment Gateway</h4>
+                                    <p>Stripe, PayPal integration</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€699</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="499" data-name="Product Catalog" data-time="1" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">📦</div>
+                                <div class="option-text">
+                                    <h4>Product Catalog</h4>
+                                    <p>Browse products without checkout</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€499</span>
+                            <div class="option-toggle"></div>
+                        </div>
+                    </div>
+
+                    <!-- SEO & Performance -->
+                    <div class="option-category">
+                        <div class="category-title">🚀 SEO & Performance</div>
+
+                        <div class="option-item" data-price="499" data-name="Advanced SEO" data-time="0.5" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">🔍</div>
+                                <div class="option-text">
+                                    <h4>Advanced SEO</h4>
+                                    <p>Schema markup, optimization</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€499</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="299" data-name="Speed Optimization" data-time="0.5" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">⚡</div>
+                                <div class="option-text">
+                                    <h4>Speed Optimization</h4>
+                                    <p>Lazy loading, caching, CDN</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€299</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="399" data-name="Analytics Setup" data-time="0.25" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">📊</div>
+                                <div class="option-text">
+                                    <h4>Analytics Setup</h4>
+                                    <p>Google Analytics, heatmaps</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€399</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="299" data-name="Cookie Consent" data-time="0.25" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">🍪</div>
+                                <div class="option-text">
+                                    <h4>GDPR Cookie Consent</h4>
+                                    <p>Compliant cookie banner</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€299</span>
+                            <div class="option-toggle"></div>
+                        </div>
+                    </div>
+
+                    <!-- CMS & Backend -->
+                    <div class="option-category">
+                        <div class="category-title">🔧 CMS & Backend</div>
+
+                        <div class="option-item" data-price="799" data-name="CMS Integration" data-time="1" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">✏️</div>
+                                <div class="option-text">
+                                    <h4>CMS Integration</h4>
+                                    <p>Edit content yourself easily</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€799</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="599" data-name="Multi-language" data-time="1" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">🌍</div>
+                                <div class="option-text">
+                                    <h4>Multi-language</h4>
+                                    <p>Support for 2+ languages</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€599</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="399" data-name="User Accounts" data-time="1" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">👤</div>
+                                <div class="option-text">
+                                    <h4>User Accounts</h4>
+                                    <p>Login, registration, profiles</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€399</span>
+                            <div class="option-toggle"></div>
+                        </div>
+                    </div>
+
+                    <!-- Hosting & Support -->
+                    <div class="option-category">
+                        <div class="category-title">💚 Hosting & Support</div>
+
+                        <div class="option-item" data-price="199" data-name="Domain Setup" data-time="0" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">🔗</div>
+                                <div class="option-text">
+                                    <h4>Domain Setup</h4>
+                                    <p>Connect your domain + SSL</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€199</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="499" data-name="Hosting (1 year)" data-time="0" data-monthly="49" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">☁️</div>
+                                <div class="option-text">
+                                    <h4>Managed Hosting</h4>
+                                    <p>Fast, secure hosting for 1 year</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€499/yr</span>
+                            <div class="option-toggle"></div>
+                        </div>
+
+                        <div class="option-item" data-price="399" data-name="Maintenance (monthly)" data-time="0" data-monthly="39" data-calc="website">
+                            <div class="option-info">
+                                <div class="option-icon">🛡️</div>
+                                <div class="option-text">
+                                    <h4>Monthly Maintenance</h4>
+                                    <p>Updates, backups, monitoring</p>
+                                </div>
+                            </div>
+                            <span class="option-price">+€39/mo</span>
+                            <div class="option-toggle"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price Panel -->
+                <div class="price-panel">
+                    <div class="price-card website-card">
+                        <h3>🌐 Your Website Price</h3>
+
+                        <div class="total-price">
+                            <div class="label">Estimated Total</div>
+                            <div class="amount">
+                                <span class="currency">€</span>
+                                <span id="websiteTotalPrice">999</span>
+                            </div>
+                            <div class="note">One-time payment</div>
+                        </div>
+
+                        <div class="monthly-option" id="monthlyOption" style="display: none;">
+                            <div class="label">+ Recurring Costs</div>
+                            <div class="value" id="monthlyPrice">€0/month</div>
+                            <div class="note">Hosting & maintenance</div>
+                        </div>
+
+                        <div class="price-breakdown">
+                            <h4>📋 Your Selection</h4>
+                            <ul class="breakdown-list" id="websiteBreakdownList">
+                                <li>
+                                    <span class="item-name">🏠 Landing Page</span>
+                                    <span class="item-price">€999</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="time-estimate">
+                            <div class="label">⏱️ Estimated Timeline</div>
+                            <div class="value" id="websiteTimeEstimate">1-2 weeks</div>
+                        </div>
+
+                        <a href="#contact" class="btn btn-pink">Get Started 🚀</a>
+                        <button class="btn btn-reset" onclick="resetWebsiteCalculator()">Reset Selection 🔄</button>
+
+                        <div class="savings-badge" id="websiteSavingsBadge" style="display: none;">
+                            🎉 Bundle discount applied!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fun-facts">
+            <div class="facts-grid">
+                <div class="fact-item">
+                    <div class="fact-emoji">📱</div>
+                    <div class="fact-value">1</div>
+                    <div class="fact-label">App Shipped</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-emoji">☕</div>
+                    <div class="fact-value">∞</div>
+                    <div class="fact-label">Coffees Consumed</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-emoji">🐛</div>
+                    <div class="fact-value">0*</div>
+                    <div class="fact-label">Bugs (*probably)</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-emoji">🇭🇷</div>
+                    <div class="fact-value">100%</div>
+                    <div class="fact-label">Croatian Made</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="section-header">
+                <span class="section-tag">🛠️ Services</span>
+                <h2>What We Do</h2>
+                <p>Full-service development from "I have an idea" to "It's live!"</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Design</h3>
+                    <p>Beautiful interfaces, custom icons, and branding that makes your project pop!</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>App Development</h3>
+                    <p>Native iOS with Swift & SwiftUI. Fast, smooth, and feels like magic.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Web Development</h3>
+                    <p>Modern websites that load fast, look great, and convert visitors.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💚</div>
+                    <h3>Support</h3>
+                    <p>Updates, new features, and keeping everything running smoothly.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="cta">
+            <h2>Got a project idea? 💡</h2>
+            <p>Let's make something awesome together!</p>
+            <a href="mailto:hello@darko.dev" class="btn btn-primary">
+                Get in Touch 🎉
+            </a>
+        </section>
+
+        <footer>
+            <span class="footer-logo">Darko Apps ✦</span>
+            <div class="footer-links">
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+            </div>
+            <p class="footer-copyright">© 2025 Darko Apps. Made with ❤️ in Croatia</p>
+        </footer>
+    </div>
+
+    <script>
+        // ==================
+        // CALCULATOR LOGIC
+        // ==================
+
+        // Show/hide calculators
+        function showCalculator(type) {
+            document.getElementById('calculator-selector').style.display = 'none';
+
+            if (type === 'app') {
+                document.getElementById('app-calculator').classList.add('active');
+                document.getElementById('website-calculator').classList.remove('active');
+            } else {
+                document.getElementById('website-calculator').classList.add('active');
+                document.getElementById('app-calculator').classList.remove('active');
+            }
+
+            // Scroll to calculator
+            document.querySelector('.calculator.active').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function hideCalculators() {
+            document.getElementById('calculator-selector').style.display = 'block';
+            document.getElementById('app-calculator').classList.remove('active');
+            document.getElementById('website-calculator').classList.remove('active');
+
+            document.getElementById('calculator-selector').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ==================
+        // APP CALCULATOR
+        // ==================
+        const appOptions = document.querySelectorAll('#app-calculator .option-item:not(.required)');
+        const appBasePrice = 2499;
+        const appBaseTime = 4;
+        const appBaseItems = [
+            { name: '📱 iOS Development', price: 2499 },
+            { name: '🎯 Project Setup', price: 0 },
+            { name: '🎨 Basic UI Design', price: 0 },
+            { name: '🚀 App Store Submission', price: 0 }
+        ];
+
+        appOptions.forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('selected');
+                updateAppPrice();
+            });
+        });
+
+        function updateAppPrice() {
+            let totalPrice = appBasePrice;
+            let totalTime = appBaseTime;
+            let selectedItems = [];
+
+            appOptions.forEach(item => {
+                if (item.classList.contains('selected')) {
+                    const price = parseInt(item.dataset.price);
+                    const time = parseFloat(item.dataset.time);
+                    const name = item.dataset.name;
+                    const icon = item.querySelector('.option-icon').textContent;
+
+                    totalPrice += price;
+                    totalTime += time;
+                    selectedItems.push({ name: `${icon} ${name}`, price: price });
+                }
+            });
+
+            // Bundle discount
+            let discount = 0;
+            const badge = document.getElementById('appSavingsBadge');
+            if (selectedItems.length >= 5) {
+                discount = Math.round(totalPrice * 0.1);
+                totalPrice -= discount;
+                badge.style.display = 'inline-flex';
+                badge.textContent = `🎉 10% bundle discount: -€${discount.toLocaleString()}!`;
+            } else if (selectedItems.length >= 3) {
+                discount = Math.round(totalPrice * 0.05);
+                totalPrice -= discount;
+                badge.style.display = 'inline-flex';
+                badge.textContent = `🎉 5% bundle discount: -€${discount.toLocaleString()}!`;
+            } else {
+                badge.style.display = 'none';
+            }
+
+            // Update display
+            document.getElementById('appTotalPrice').textContent = totalPrice.toLocaleString();
+
+            // Update breakdown
+            let html = '';
+            appBaseItems.forEach(item => {
+                html += `<li><span class="item-name">${item.name}</span><span class="item-price ${item.price === 0 ? 'included' : ''}">${item.price === 0 ? 'Free' : '€' + item.price.toLocaleString()}</span></li>`;
+            });
+            selectedItems.forEach(item => {
+                html += `<li><span class="item-name">${item.name}</span><span class="item-price">+€${item.price.toLocaleString()}</span></li>`;
+            });
+            document.getElementById('appBreakdownList').innerHTML = html;
+
+            // Update time
+            const minWeeks = Math.ceil(totalTime);
+            const maxWeeks = Math.ceil(totalTime * 1.5);
+            document.getElementById('appTimeEstimate').textContent = `${minWeeks}-${maxWeeks} weeks`;
+        }
+
+        function resetAppCalculator() {
+            appOptions.forEach(item => item.classList.remove('selected'));
+            updateAppPrice();
+        }
+
+        // ==================
+        // WEBSITE CALCULATOR
+        // ==================
+        const websiteOptions = document.querySelectorAll('#website-calculator .option-item:not(.required)');
+        const websiteBasePrice = 999;
+        const websiteBaseTime = 1;
+        const websiteBaseItems = [
+            { name: '🏠 Landing Page', price: 999 },
+            { name: '🎯 Project Setup', price: 0 },
+            { name: '📱 Mobile Responsive', price: 0 },
+            { name: '🔍 Basic SEO', price: 0 }
+        ];
+
+        websiteOptions.forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('selected');
+                updateWebsitePrice();
+            });
+        });
+
+        function updateWebsitePrice() {
+            let totalPrice = websiteBasePrice;
+            let totalTime = websiteBaseTime;
+            let monthlyTotal = 0;
+            let selectedItems = [];
+
+            websiteOptions.forEach(item => {
+                if (item.classList.contains('selected')) {
+                    const price = parseInt(item.dataset.price);
+                    const time = parseFloat(item.dataset.time);
+                    const name = item.dataset.name;
+                    const icon = item.querySelector('.option-icon').textContent;
+                    const monthly = item.dataset.monthly ? parseInt(item.dataset.monthly) : 0;
+
+                    totalPrice += price;
+                    totalTime += time;
+                    monthlyTotal += monthly;
+                    selectedItems.push({ name: `${icon} ${name}`, price: price, monthly: monthly });
+                }
+            });
+
+            // Bundle discount
+            let discount = 0;
+            const badge = document.getElementById('websiteSavingsBadge');
+            if (selectedItems.length >= 5) {
+                discount = Math.round(totalPrice * 0.1);
+                totalPrice -= discount;
+                badge.style.display = 'inline-flex';
+                badge.textContent = `🎉 10% bundle discount: -€${discount.toLocaleString()}!`;
+            } else if (selectedItems.length >= 3) {
+                discount = Math.round(totalPrice * 0.05);
+                totalPrice -= discount;
+                badge.style.display = 'inline-flex';
+                badge.textContent = `🎉 5% bundle discount: -€${discount.toLocaleString()}!`;
+            } else {
+                badge.style.display = 'none';
+            }
+
+            // Update display
+            document.getElementById('websiteTotalPrice').textContent = totalPrice.toLocaleString();
+
+            // Monthly costs
+            const monthlyOption = document.getElementById('monthlyOption');
+            if (monthlyTotal > 0) {
+                monthlyOption.style.display = 'block';
+                document.getElementById('monthlyPrice').textContent = `€${monthlyTotal}/month`;
+            } else {
+                monthlyOption.style.display = 'none';
+            }
+
+            // Update breakdown
+            let html = '';
+            websiteBaseItems.forEach(item => {
+                html += `<li><span class="item-name">${item.name}</span><span class="item-price ${item.price === 0 ? 'included' : ''}">${item.price === 0 ? 'Free' : '€' + item.price.toLocaleString()}</span></li>`;
+            });
+            selectedItems.forEach(item => {
+                const priceText = item.monthly > 0 ? `+€${item.monthly}/mo` : `+€${item.price.toLocaleString()}`;
+                html += `<li><span class="item-name">${item.name}</span><span class="item-price">${priceText}</span></li>`;
+            });
+            document.getElementById('websiteBreakdownList').innerHTML = html;
+
+            // Update time
+            const minWeeks = Math.max(1, Math.ceil(totalTime));
+            const maxWeeks = Math.ceil(totalTime * 1.5);
+            document.getElementById('websiteTimeEstimate').textContent = `${minWeeks}-${maxWeeks} weeks`;
+        }
+
+        function resetWebsiteCalculator() {
+            websiteOptions.forEach(item => item.classList.remove('selected'));
+            updateWebsitePrice();
+        }
+
+        // Initialize
+        updateAppPrice();
+        updateWebsitePrice();
+    </script>
+</body>
+</html>
