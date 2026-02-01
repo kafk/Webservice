@@ -46,17 +46,17 @@
         /* Navigation */
         nav {
             position: fixed;
-            top: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            padding: 0.6rem 1rem;
+            padding: 0.8rem 2rem;
             background: var(--white);
-            border-radius: 50px;
-            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.15);
+            box-shadow: 0 2px 20px rgba(124, 58, 237, 0.15);
             display: flex;
             gap: 1rem;
             align-items: center;
+            justify-content: center;
         }
 
         .logo {
@@ -1026,7 +1026,7 @@
 
         @media (max-width: 768px) {
             nav {
-                width: calc(100% - 2rem);
+                padding: 0.8rem 1rem;
                 justify-content: space-between;
             }
 
