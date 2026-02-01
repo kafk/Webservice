@@ -1053,6 +1053,109 @@
             }
         }
 
+        /* FAQ Section */
+        .faq {
+            background: var(--white);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--cream);
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--purple-light);
+            transform: translateX(5px);
+        }
+
+        .faq-item.active {
+            border-color: var(--purple);
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(236, 72, 153, 0.05));
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .faq-question h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem;
+            color: var(--dark);
+            flex: 1;
+            margin: 0;
+        }
+
+        .faq-toggle {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            color: var(--purple);
+            font-weight: 600;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-toggle {
+            background: var(--purple);
+            color: var(--white);
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            padding: 0 1.5rem 1.5rem 4rem;
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .faq-question {
+                padding: 1rem 1.25rem;
+            }
+
+            .faq-question h3 {
+                font-size: 1rem;
+            }
+
+            .faq-answer p {
+                padding: 0 1.25rem 1.25rem 1.25rem;
+            }
+        }
+
         /* Modal Styles */
         .modal {
             display: none;
@@ -1259,6 +1362,7 @@
             <ul class="nav-links">
                 <li><a href="#calculator-selector">Pricing</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact" onclick="event.preventDefault(); openContactModal();" class="nav-cta">Say Hi! 👋</a></li>
             </ul>
         </nav>
@@ -2157,6 +2261,105 @@
             </div>
         </section>
 
+        <!-- FAQ Section -->
+        <section id="faq" class="faq">
+            <div class="section-header">
+                <span class="section-tag">❓ FAQ</span>
+                <h2>Got Questions?</h2>
+                <p>Here are the answers to the most common ones!</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span class="faq-icon">💰</span>
+                        <h3>How does pricing work?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer transparent, project-based pricing. Use our calculator above to get an instant estimate based on your needs. The final price depends on the features you choose — no hidden fees, no surprises!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span class="faq-icon">⏱️</span>
+                        <h3>How long does a project take?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A simple landing page can be ready in 1-2 weeks. A basic iOS app typically takes 4-6 weeks. More complex projects with custom features may take longer. We'll give you a detailed timeline after our initial chat!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span class="faq-icon">🔄</span>
+                        <h3>What's included in revisions?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Every project includes 2 rounds of revisions at each milestone. We work closely with you throughout the process, so major surprises are rare. Additional revision rounds can be added if needed.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span class="faq-icon">🛡️</span>
+                        <h3>Do you offer support after launch?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Every project comes with 30 days of free support for bug fixes. You can extend this to 90 days or add priority support. We also offer ongoing maintenance packages for websites.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span class="faq-icon">💳</span>
+                        <h3>What are the payment terms?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We typically split payments into milestones: 40% upfront to start, 30% at mid-project review, and 30% upon completion. For smaller projects, we may offer 50/50 terms. We accept bank transfers and major credit cards.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span class="faq-icon">📱</span>
+                        <h3>Do you build Android apps too?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Currently, we specialize in iOS development using Swift and SwiftUI. This allows us to deliver the best possible quality for iPhone and iPad apps. Android development may be available in the future!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span class="faq-icon">🤝</span>
+                        <h3>How do we communicate during the project?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We use whatever works best for you — Slack, email, or video calls. You'll get regular updates with progress demos, and we're always just a message away. Expect responses within 24 hours (usually much faster)!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span class="faq-icon">📋</span>
+                        <h3>Who owns the code and designs?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You do! Once the project is complete and paid for, all code, designs, and assets are 100% yours. We'll hand over everything you need, including source files and documentation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="contact" class="cta">
             <h2>Got a project idea? 💡</h2>
             <p>Let's make something awesome together!</p>
@@ -2490,6 +2693,21 @@
                 closeContactModal();
             }
         });
+
+        // ==================
+        // FAQ ACCORDION
+        // ==================
+        function toggleFaq(element) {
+            // Close other open items
+            document.querySelectorAll('.faq-item.active').forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Toggle clicked item
+            element.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
