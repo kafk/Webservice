@@ -43,6 +43,33 @@
             overflow-x: hidden;
         }
 
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--cream);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            border-radius: 10px;
+            border: 2px solid var(--cream);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--purple-light), var(--pink-light));
+        }
+
+        /* Firefox scrollbar */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--purple) var(--cream);
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -2375,7 +2402,7 @@
                 <div class="modal-header">
                     <span class="modal-icon">💌</span>
                     <h2>Let's Chat!</h2>
-                    <p>Tell us about your project and we'll get back to you within 24 hours.</p>
+                    <p>Tell us about your project and we'll get back to you within 48 hours.</p>
                 </div>
                 <form id="contactForm" onsubmit="submitContactForm(event)">
                     <div class="form-group">
@@ -2397,17 +2424,6 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="budget">Budget Range</label>
-                        <select id="budget" name="budget">
-                            <option value="">Select your budget...</option>
-                            <option value="under-3k">Under €3,000</option>
-                            <option value="3k-5k">€3,000 - €5,000</option>
-                            <option value="5k-10k">€5,000 - €10,000</option>
-                            <option value="10k-plus">€10,000+</option>
-                            <option value="not-sure">Not sure yet</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label for="message">Tell Us About Your Project</label>
                         <textarea id="message" name="message" placeholder="Describe your idea, goals, and any specific features you have in mind..." rows="4" required></textarea>
                     </div>
@@ -2418,7 +2434,7 @@
                 <div id="formSuccess" class="form-success" style="display: none;">
                     <span class="success-icon">🎉</span>
                     <h3>Message Sent!</h3>
-                    <p>Thanks for reaching out! We'll get back to you within 24 hours.</p>
+                    <p>Thanks for reaching out! We'll get back to you within 48 hours.</p>
                     <button onclick="closeContactModal()" class="btn btn-secondary">Close</button>
                 </div>
             </div>
@@ -2667,7 +2683,6 @@
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 projectType: document.getElementById('projectType').value,
-                budget: document.getElementById('budget').value,
                 message: document.getElementById('message').value
             };
 
